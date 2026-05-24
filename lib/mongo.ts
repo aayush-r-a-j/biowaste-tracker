@@ -1,21 +1,31 @@
 import mongoose from "mongoose";
 
 const MONGODB_URI =
-  "mongodb://127.0.0.1:27017/biowasteDB";
+  process.env.MONGODB_URI!;
 
-
-
-  export const connectDB = async () => {
+export async function connectDB() {
 
   try {
 
-    await mongoose.connect(MONGODB_URI);
+    if (
+      mongoose.connection.readyState >= 1
+    ) {
 
-    console.log("MongoDB Connected");
+      return;
+
+    }
+
+    await mongoose.connect(
+      MONGODB_URI
+    );
+
+    console.log(
+      "MongoDB Connected"
+    );
 
   } catch (error) {
 
-    console.log("MongoDB Connection Error");
+    console.log(error);
 
   }
 
