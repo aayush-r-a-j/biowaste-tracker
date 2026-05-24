@@ -51,7 +51,7 @@ export default function SignupPage() {
       const data =
         await response.json();
 
-      alert(data.message);
+        console.log(data)
 
 
 
@@ -136,7 +136,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl"
+              className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl"
             >
               Create Account
             </button>
